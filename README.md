@@ -15,7 +15,7 @@ Deposit the required number of boxes at the central switch within the time limit
 
 Locate the key and touch it to go to the next dream. When you enter the next dream, your hearts of life will be restored.
 
-Repeat steps 3 through 6 for each of the 10 different dreams. Remember to avoid getting hit by the enemies and make sure to collect the boxes and activate the switches before the time runs out.
+Repeat steps for each of the 10 different dreams. Remember to avoid getting hit by the enemies and make sure to collect the boxes and activate the switches before the time runs out.
 
 If you die or wake up (fall) from sleep at any point, you'll have to start over. Stay focused and agile to avoid situations that could jeopardize your progress.
 
