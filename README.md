@@ -1,6 +1,8 @@
 # Dream_Escape
 
 The instructions,
+
+
 Prepare for bed by making sure you have a calm and comfortable environment in which to focus.
 
 Close your eyes and visualize the dream you want to enter. Imagine the setting, the details, and the challenges you might face.
