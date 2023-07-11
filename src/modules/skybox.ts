@@ -26,7 +26,7 @@ export function CreateSkybox (){
 	//root
 	skyboxRoot = engine.addEntity()    
 
-	Transform.create(skyboxRoot, { position: Vector3.create(sceneSizeX / 2, height / 2, sceneSizeZ / 2) })
+	Transform.create(skyboxRoot, { position: Vector3.create(sceneSizeX / 2, (height / 2) +2, sceneSizeZ / 2) })
 
 	//front
 	skyboxPZ = engine.addEntity()

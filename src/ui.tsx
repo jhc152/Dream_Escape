@@ -20,12 +20,81 @@ let showUI:boolean = false
 let showPoap:boolean = false
 let gameComplete : boolean = false
 
+let showInstructions:boolean = false
+
+const instrucciones = `Get ready to enter the dream by ensuring you have a calm and comfortable environment to focus on.\n
+
+Enter the dream and complete the 10 different dreams without dying.
+To advance in a dream, obtain the key that will take you to another dream. To obtain the key for a dream, 
+collect the boxes scattered around the dream and place them inside the central switch. Once you have collected the necessary number of 
+boxes to activate the switch, the enemies will disappear and the key will be revealed. Touch it and you will move on to the next dream.
+
+Avoid getting hit by the enemy, as you only have 3 heart points or running out of time before obtaining the key.
+
+Every time you move from one dream to another, your life will be restored. Be fast, you have 10 seconds for each required box.
+
+If you die or wake up (fall) from the dream, you will have to start over.`
+
 
 const uiComponent = () => { 
 
 
-  const textToPoap = gameComplete ? `Congratulations, you passed all the levels\n
-  Thanks for playing` :`To unlock the poap machine: \n Enter the lucid dream and achieve all 10 dream levels.`
+  const textToPoap = gameComplete ? ` Thanks for playing this demo\n
+  Sorry, this poop machine was just illustrative, but come back soon.\n
+  There will be more gameplay, more deep dreams, more enemies, more challenge, and of course your own art... this is just the beginning.
+  \n\n
+  greetings\n
+  jhoico  
+  `  
+  
+  :`To unlock the poap machine: \n Enter the lucid dream and achieve all 10 dream levels.`
+
+
+
+
+  if(showInstructions){
+
+
+    return (
+      <UiEntity
+        uiTransform={{
+          width: '100%',
+          height: '100%',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '0 0 0 0',
+        }}
+        uiBackground={{ color: Color4.create(0, 0, 0, 1) }}
+      >
+         <Label                
+                value = {instrucciones}
+                color={Color4.White()}
+                fontSize={15}
+                textAlign='middle-center'
+
+                uiTransform={{ width: '300', height: '250', margin: '0 0 0 20', } }
+              />
+
+
+          <Button
+            uiTransform={{ width: 100, height: 40, margin: 20 }}
+            value='Ok'
+            variant='primary'
+            fontSize={14}
+            onMouseDown={() => {
+              showInstructions = false
+            }}
+          />
+
+
+        
+      </UiEntity>
+    );
+
+  }
+
+
 
 
   if(showPoap){
@@ -339,3 +408,9 @@ export function SetShowPoap(value:boolean){
 export function SetGameComplete (value:boolean){
   gameComplete = value
 }
+
+
+export function SetShowInstructions (value:boolean){
+  showInstructions = value
+}
+

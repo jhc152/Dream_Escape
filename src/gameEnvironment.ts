@@ -8,6 +8,7 @@ import { movePlayerTo } from "~system/RestrictedActions"
 import * as utils from '@dcl-sdk/utils'
 import { GameOver, StartGame } from "."
 import { GetRandomNumber } from "./utils"
+import { SetShowInstructions } from "./ui"
 
 
 
@@ -91,9 +92,19 @@ export function GameEnvironmentSet(){
 
 	//Teleport to the platform
 	const clickableEntity = engine.addEntity()
-	MeshRenderer.setBox(clickableEntity)
+	//MeshRenderer.setBox(clickableEntity)
+
+
+    GltfContainer.create(clickableEntity, { src: 'models/robotTalking.glb' })
+
+
+
 	MeshCollider.setBox(clickableEntity)
-	Transform.create(clickableEntity, { position: Vector3.create(sceneSizeX / 2, 1, sceneSizeZ / 2) })
+	Transform.create(clickableEntity, { 
+        position: Vector3.create((sceneSizeX / 2) - 5, 1.25, sceneSizeZ / 2), 
+        rotation: { x: 0, y: 50, z: 0, w: 0 } ,
+        scale: Vector3.create(1.5, 1.5, 1.5)
+    })
 
 	pointerEventsSystem.onPointerDown(
 		{
@@ -114,15 +125,63 @@ export function GameEnvironmentSet(){
     const sign = engine.addEntity(true)
 
     Transform.create(sign,{
-        position: Vector3.create(0, 1 ,0),
-        parent: clickableEntity
+        position: Vector3.create(0, 1.2 ,0),
+        parent: clickableEntity,
+        rotation: { x: 0, y: -50, z: 0, w: 0 } ,
     })
     TextShape.create(sign,{
         text: 'To dream',
         textColor: { r: 1, g: 1, b: 1, a: 1 },
-        fontSize:10,
+        fontSize:8,
        
       })
+
+
+
+
+    const instructionEntity = engine.addEntity()
+	//MeshRenderer.setBox(instructionEntity)
+
+    GltfContainer.create(instructionEntity, { src: 'models/robotTalking.glb' })
+   
+	MeshCollider.setBox(instructionEntity)
+	Transform.create(instructionEntity, { 
+        position: Vector3.create((sceneSizeX / 2) + 5, 1.25, sceneSizeZ / 2) ,
+        rotation: { x: 0, y: 50, z: 0, w: 0 } ,
+        scale: Vector3.create(1.5, 1.5, 1.5)
+    })
+
+	pointerEventsSystem.onPointerDown(
+		{
+			entity: instructionEntity, opts: {
+				button: InputAction.IA_POINTER,
+				hoverText: 'Instructions'
+			}
+		}
+		,
+		function () {
+            SetShowInstructions(true)
+		}
+	)
+
+
+    const signInstructions = engine.addEntity(true)
+
+    Transform.create(signInstructions,{
+        position: Vector3.create(0, 1.2 ,0),
+        parent: instructionEntity,
+        rotation: { x: 0, y: -50, z: 0, w: 0 } ,
+    })
+    TextShape.create(signInstructions,{
+        text: 'Instructions',
+        textColor: { r: 1, g: 1, b: 1, a: 1 },
+        fontSize:8
+       
+       
+      })
+
+
+
 
 
 
@@ -156,6 +215,30 @@ export function GameEnvironmentSet(){
     // AvatarAttach.create(cubito,{
     //     anchorPointId: AvatarAnchorPointType.AAPT_NAME_TAG,
     // })
+
+
+
+    const tree = engine.addEntity()
+
+    GltfContainer.create(tree, { src: 'models/Tree.gltf' })
+    Transform.create(tree, {
+		//position: Vector3.create(sceneSizeX / 2, height / 2, sceneSizeZ / 2),
+		position: Vector3.create((sceneSizeX / 2)-5, 0, (sceneSizeZ / 2)+10),
+		scale: Vector3.create(1.6, 1.6, 1.6)
+	})    
+
+
+
+    const ground = engine.addEntity()
+
+    GltfContainer.create(ground, { src: 'models/FloorBaseGrass.glb' })
+    Transform.create(ground, {
+		//position: Vector3.create(sceneSizeX / 2, height / 2, sceneSizeZ / 2),
+		position: Vector3.create((sceneSizeX / 2), 0, (sceneSizeZ / 2)),
+		scale: Vector3.create(9.6, 1.6,9.6)
+	})    
+    
+    
 
 
   
